@@ -2,8 +2,16 @@ def criar_contato(nome, telefone, email, favorito):
     contato = {"nome": nome, "telefone": telefone, "email": email, "favorito": favorito}
     contatos.append(contato)
 
-def exibir_contatos():
-    print(contatos)
+def exibir_contatos(): #TODO - Corrigir alguns bugs na lógica de favoritos | Iterar número do contato
+    i = 1
+    for contato in contatos:
+        is_favorito = ''
+        if contato['favorito'] == True:
+            is_favorito = 'X'
+
+        print(f"({i})[\nNome: {contato['nome']}\nTelefone: {contato['telefone']}\nEmail: {contato['email']}\nFavorito:[{is_favorito}]\n]")
+        print("")
+      
 
 contatos = []
 
