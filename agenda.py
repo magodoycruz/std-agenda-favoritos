@@ -14,8 +14,19 @@ def exibir_contatos():
         if contato['favorito'] == True:
             is_favorito = 'X'
 
-        print(f"({i})[Nome: {contato['nome']}|Telefone: {contato['telefone']}|Email: {contato['email']}|Favorito:[{is_favorito}]]\n")
+        print(f"({i})[Nome: {contato['nome']}|Telefone: {contato['telefone']}|Email: {contato['email']}|Favorito:[{is_favorito}]]")
         i=i+1
+    print("--------------------------------------------------")
+
+def editar_contato(id):
+    contato_a_editar = contatos[int(id)-1]
+    nome = input("Novo nome: ")
+    telefone = input("Novo telefone: ")
+    email = input("Novo email: ")
+    favorito = input("Contato favorito?\n(1) Sim\n(0) Não\n")
+    contatos[int(id)-1] = {"nome": nome, "telefone": telefone, "email": email, "favorito": favorito}
+    print("Alteração realizada! \n")
+    print("--------------------------------------------------")
 
 contatos = []
 
@@ -42,7 +53,8 @@ while True:
     elif opt == 2:
         exibir_contatos()
     elif opt == 3:
-        print("Altera um contato")
+        id_contato = input("Qual contato deseja editar?")
+        editar_contato(id_contato)
     elif opt == 4:
         print("Deleta um contato")
     elif opt == 5:
