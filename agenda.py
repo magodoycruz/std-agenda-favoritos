@@ -1,17 +1,21 @@
+1
 def criar_contato(nome, telefone, email, favorito):
     contato = {"nome": nome, "telefone": telefone, "email": email, "favorito": favorito}
+    if favorito == '1':
+        contato['favorito'] = True
+    else:
+        contato['favorito'] = False
     contatos.append(contato)
 
-def exibir_contatos(): #TODO - Corrigir alguns bugs na lógica de favoritos | Iterar número do contato
+def exibir_contatos(): 
     i = 1
     for contato in contatos:
-        is_favorito = ''
+        is_favorito = ' '
         if contato['favorito'] == True:
             is_favorito = 'X'
 
-        print(f"({i})[\nNome: {contato['nome']}\nTelefone: {contato['telefone']}\nEmail: {contato['email']}\nFavorito:[{is_favorito}]\n]")
-        print("")
-      
+        print(f"({i})[Nome: {contato['nome']}|Telefone: {contato['telefone']}|Email: {contato['email']}|Favorito:[{is_favorito}]]\n")
+        i=i+1
 
 contatos = []
 
@@ -34,7 +38,7 @@ while True:
         telefone = input("Telefone: ")
         email = input("Email: ")
         favorito = input("Contato favorito?\n(1) Sim\n(0) Não\n")
-        criar_contato(nome, telefone, email, bool(favorito))
+        criar_contato(nome, telefone, email, favorito)
     elif opt == 2:
         exibir_contatos()
     elif opt == 3:
